@@ -28,7 +28,7 @@ library
   build-depends:
     X11 ^>=1.10.3,
     base >=4.20.0 && <5,
-    containers ^>=0.7,
+    containers ^>=0.6,
     extra ^>=1.8,
     xmonad ^>=0.18.0,
     xmonad-contrib ^>=0.18.1,
