@@ -1,0 +1,39 @@
+cabal-version: 3.8
+name: xmonad-jc-extra
+version: 0.1.0.0
+synopsis: Custom layouts to extend xmonad
+description: Additional layouts to use with xmonad.
+license: BSD-3-Clause
+license-file: LICENSE
+tested-with: ghc ==9.10.3
+author: John Cinnamond
+maintainer: john@cinnamond.me.uk
+category: System
+build-type: Simple
+
+source-repository head
+  type: git
+  location: https://github.com/jcinnamond/xmonad-jc-extra
+
+library
+  ghc-options: -Wall
+  default-language: GHC2024
+  default-extensions:
+    FlexibleContexts
+    ImportQualifiedPost
+    MultiParamTypeClasses
+    OverloadedRecordDot
+    TypeSynonymInstances
+
+  build-depends:
+    X11 ^>=1.10.3,
+    base ^>=4.20.0,
+    containers ^>=0.7,
+    extra ^>=1.8,
+    xmonad ^>=0.18.0,
+    xmonad-contrib ^>=0.18.1,
+
+  hs-source-dirs: .
+  other-modules:
+    XMonad.Layout.Conditional
+    XMonad.Layout.PiP

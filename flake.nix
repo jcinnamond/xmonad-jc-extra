@@ -1,5 +1,5 @@
 {
-  description = "My custom xmonad layout";
+  description = "Custom layouts to extend xmonad";
 
   inputs = {
     nixpkgs.url = "github:nixos/nixpkgs";
@@ -16,10 +16,10 @@
           ...
         }:
         let
-          my-xmonad = pkgs.haskellPackages.callCabal2nix "my-xmonad" ./. { };
+          xmonad-jc-extra = pkgs.haskellPackages.callCabal2nix "xmonad-jc-extra" ./. { };
         in
         {
-          packages.default = my-xmonad;
+          packages.default = xmonad-jc-extra;
 
           devShells.default = pkgs.mkShell {
             packages = with pkgs; [
