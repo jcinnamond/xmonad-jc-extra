@@ -18,10 +18,11 @@ instance (LayoutClass l Window) => LayoutClass (PiP l) Window where
             xOffset = rect_width rect - width
             yStart = (rect_height rect - height) `div` 5
             pipRect = Rectangle (fromIntegral xOffset) (fromIntegral yStart) width height
+            restRect = rect{rect_width = xOffset}
 
         (ws, s') <- extract prop s
 
-        (ws', ml') <- maybe (pure ([], Nothing)) (doLayout l rect) s'
+        (ws', ml') <- maybe (pure ([], Nothing)) (doLayout l restRect) s'
         let l' = fromMaybe l ml'
         pure (layout pipRect ws <> ws', Just $ PiP prop width l')
 
@@ -32,4 +33,4 @@ extract prop s = do
 
 layout :: Rectangle -> [Window] -> [(Window, Rectangle)]
 layout _ [] = []
-layout rect (w : ws) = (w, rect) : layout rect{rect_y = fromIntegral (rect.rect_y + rect.rect_y + 5)} ws
+layout rect (w : ws) = (w, rect) : layout rect{rect_y = fromIntegral (rect_y rect * 2 + 5)} ws
