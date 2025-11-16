@@ -1,0 +1,34 @@
+cabal-version: 3.8
+name: my-xmonad
+version: 0.1.0.0
+license:
+author: John Cinnamond
+maintainer: john@cinnamond.me.uk
+build-type: Simple
+
+common common
+  ghc-options: -Wall
+  default-extensions:
+    FlexibleContexts
+    ImportQualifiedPost
+    MultiParamTypeClasses
+    OverloadedRecordDot
+    TypeSynonymInstances
+
+  default-language: GHC2024
+  build-depends:
+    X11,
+    base,
+    xmonad,
+    xmonad-contrib,
+
+library
+  import: common
+  hs-source-dirs: .
+  build-depends:
+    containers,
+    extra,
+
+  other-modules:
+    XMonad.Layout.Conditional
+    XMonad.Layout.PiP
